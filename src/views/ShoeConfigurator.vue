@@ -160,7 +160,7 @@ const saveConfiguration = async () => {
         configuration.colorOptions[child.name] = `#${color}`;
         // Assuming material is a simple material with basic properties
         configuration.materialOptions[child.name] = {
-          ao: child.material.map ? child.material.map.image.src : '',
+          ao: child.material.aoMap ? child.material.aoMap.image.src : '',
           base: child.material.map ? child.material.map.image.src : '',
           normal: child.material.normalMap ? child.material.normalMap.image.src : '',
           roughness: child.material.roughnessMap ? child.material.roughnessMap.image.src : '',
@@ -309,12 +309,14 @@ onMounted(() => {
     <MenuPopUp v-if="activeMenu !== null" :activeMenu="activeMenu" @closeMenu="closeMenu" @selectColor="selectColor"
       @selectMaterial="selectMaterial" @selectJewelry="selectJewelry" :colorOptions="colorOptions"
       :materialOptions="materialOptions" />
+    <button @click="saveConfiguration" style="position: fixed; bottom: 20px; right: 20px;">Save Configuration</button>
   </div>
 </template>
 
 <style scoped>
 #app-container {
   display: flex;
+  flex-direction: column;
 }
 
 #threejs-container {
