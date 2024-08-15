@@ -13,8 +13,8 @@ export default {
     toggleContent() {
       this.showMainContent = !this.showMainContent;
     },
-    goToNewPage() {
-      this.$router.push('/new-page');
+    goToConfigurator() { 
+      this.$router.push('/configurator');
     }
   }
 }
@@ -25,7 +25,7 @@ export default {
     <h1>{{ msg }}</h1>
 
     <div v-if="showMainContent">
-      <button @click="goToNewPage" class="about-button">Learn More About This App</button>
+      <button @click="goToConfigurator" class="about-button">Go to Configurator</button>
     </div>
 
     <div v-else>

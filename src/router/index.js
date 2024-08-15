@@ -1,6 +1,7 @@
-import { createRouter, createWebHistory } from 'vue-router'; // Updated imports
+import { createRouter, createWebHistory } from 'vue-router';
 import HelloWorld from '../components/HelloWorld.vue';
 import NewPage from '../components/newPage.vue';
+import Configurator from '../views/Configurator.vue';
 
 const routes = [
   {
@@ -12,6 +13,11 @@ const routes = [
     path: '/new-page',
     name: 'NewPage',
     component: NewPage
+  },
+  {
+    path: '/configurator',
+    name: 'Configurator',
+    component: Configurator // Add route for Configurator
   }
 ];
 
