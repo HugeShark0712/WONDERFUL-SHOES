@@ -1,21 +1,18 @@
 <script setup>
-import { defineProps, defineEmits, ref } from 'vue';
+import { defineEmits, defineProps, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import Button from './Button.vue'; // Import the Button component
 
+// Define props
 const props = defineProps({
-    circles: {
-        type: Array,
-        required: true
-    },
-    activeMenu: {
-        type: String,
-        default: null
-    }
+    circles: Array,
+    activeMenu: String
 });
 
-const emits = defineEmits(['toggleMenu']);
+// Define emits
+const emits = defineEmits(['toggleMenu', 'saveConfiguration', 'goBackToHomepage', 'confirmCancel']);
 
+// Setup router
 const router = useRouter();
 const showPopup = ref(false);
 const isConfirmation = ref(false); // To distinguish between different confirmation dialogs
@@ -75,8 +72,8 @@ const getDisplayName = (id) => {
 
         <!-- Existing shoe options -->
         <div class="shoe-options">
-            <div v-for="circle in circles" :key="circle.id" class="circle" @click="toggleMenu(circle.id)"
-                :class="{ active: circle.id === activeMenu }">
+            <div v-for="circle in props.circles" :key="circle.id" class="circle" @click="toggleMenu(circle.id)"
+                :class="{ active: circle.id === props.activeMenu }">
                 {{ getDisplayName(circle.id) }}
             </div>
         </div>
@@ -90,9 +87,12 @@ const getDisplayName = (id) => {
         <transition name="popup">
             <div v-if="showPopup" class="popup-overlay">
                 <div class="popup-content">
-                    <h3 v-if="!isConfirmation">Do you really want to confirm the configuration and go to the basket?
+                    <h3 v-if="!isConfirmation">
+                        Do you really want to confirm the configuration and go to the basket?
                     </h3>
-                    <h3 v-else>Do you really want to cancel the configuration and go back to the homepage?</h3>
+                    <h3 v-else>
+                        Do you really want to cancel the configuration and go back to the homepage?
+                    </h3>
                     <div class="popup-buttons">
                         <!-- Configuration confirmation buttons -->
                         <Button type="confirm" v-if="!isConfirmation" @click="handleConfirmConfiguration">Yes</Button>
