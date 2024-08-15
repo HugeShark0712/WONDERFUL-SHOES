@@ -1,6 +1,5 @@
 <script setup>
 import { defineProps, defineEmits, ref, computed } from 'vue';
-import axios from 'axios';
 
 // Define props
 const props = defineProps({
@@ -89,23 +88,6 @@ const updateTitle = (event) => {
     emits('update:title', title.value);
 };
 
-// Save configuration to the backend
-const saveConfiguration = async () => {
-    const config = {
-        size: euroSize.value,
-        title: title.value,
-        colors: {},
-        materials: {},
-        jewelry: {}
-    };
-
-    try {
-        const response = await axios.post('/api/v1/shoe', config);
-        console.log('Configuration saved successfully', response.data);
-    } catch (error) {
-        console.error('Error saving configuration:', error);
-    }
-};
 
 </script>
 
