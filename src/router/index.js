@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HelloWorld from '../components/HelloWorld.vue';
 import NewPage from '../components/newPage.vue';
-import Configurator from '../views/Configurator.vue';
+import Configurator from '../views/ShoeConfigurator.vue';
 
 const routes = [
   {
