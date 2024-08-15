@@ -29,8 +29,6 @@ export default {
     </div>
 
     <div v-else>
-      <h1>About This App</h1>
-      <p>This is a simple Vue.js application demonstrating basic component toggling on a single page.</p>
       <button @click="toggleContent" class="about-button">Back to Home</button>
     </div>
   </div>
